@@ -9,19 +9,7 @@ S = EX_OR(EX_OR(a,b),c)
 C = OR(AND(a,b), AND(c, EX_OR(a,b)))
 """
 
-from utils import NOT, AND, OR, EX_OR
-
-def FullAdder(num1, num2):
-  """
-  Arguments: binary strings of equal length
-  Returns: sum and carry as tuple
-  """
-  sum = ''
-  carry = '0'
-  for bit1, bit2 in zip(num1, num2):
-    sum += EX_OR(EX_OR(bit1, bit2),carry)
-    carry = OR(AND(bit1, bit2), AND(carry, EX_OR(bit1, bit2)))
-  return sum, carry
+from utils import FullAdder
 
 def main():
   num1 = input("Enter first number: ")
