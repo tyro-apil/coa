@@ -15,18 +15,8 @@ def main():
   num1 = input("Enter first number: ")
   num2 = input("Enter second number: ")
 
-  max_len = max(len(num1), len(num2))
-
-  # Padding zeroes infront 
-  num1 = num1.zfill(max_len)
-  num2 = num2.zfill(max_len)
-
-  # Reverse the string
-  num1 = num1[::-1]
-  num2 = num2[::-1]
-
   sum, carry = FullAdder(num1, num2)
-  sum = sum[::-1]
+
   print(f"{num1} + {num2} = sum:{sum} carry:{carry}")
 
 if __name__=="__main__":
