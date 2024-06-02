@@ -60,12 +60,12 @@ def TWOS_COMP(a:str):
 
 def FullSubtractor(a: str, b: str):
   a,b = add_zero_padding(a,b)
+  # a = '0'+a
+  # b = '0'+b
   twos_comp_b = TWOS_COMP(b)
   sum, carry = FullAdder(a, twos_comp_b)
   borrow = ONES_COMP(carry)
-  if borrow == '0':
-    return '+'+sum
-  return '-'+TWOS_COMP(sum)
+  return borrow+sum
 
 
   
