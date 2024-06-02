@@ -67,5 +67,28 @@ def FullSubtractor(a: str, b: str):
   borrow = ONES_COMP(carry)
   return borrow+sum
 
+def Multiply(a: str, b: str):
+  # Set partial sum=0, multipier and multiplicand
+  partial_sum = '0'
+  multiplicand = a
+  multiplier = b
+
+  # max_len, zero padding
+  n = max(len(multiplicand), len(multiplier))
+  multiplicand, multiplier = add_zero_padding(multiplicand, multiplier)
+  reversed_multiplier = multiplier[::-1]
+
+  # operate for max_len times
+  for _ in range(n):
+    carry = '0'
+    if reversed_multiplier[0] == '1':
+      partial_sum, carry = FullAdder(partial_sum, multiplicand)
+
+    # Shift multiplier
+    reversed_multiplier = reversed_multiplier[1:]+partial_sum[::-1][0]
+    # Shift partial sum
+    partial_sum = carry + partial_sum[:-1]
+
+  return partial_sum + reversed_multiplier[::-1]
 
   
